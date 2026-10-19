@@ -1,0 +1,6 @@
+export const bloodGroups = ['O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-'];
+export const districts = ['KaMpfumo', 'Nlhamankulu', 'KaMaxaquene', 'KaMavota', 'KaMubukwana', 'KaTembe', 'KaNyaka', 'Matola', 'Boane', 'Marracuene', 'Beira', 'Dondo', 'Nampula', 'Nacala', 'Pemba', 'Quelimane', 'Tete', 'Chimoio', 'Lichinga', 'Inhambane', 'Xai-Xai'];
+export const statuses: Record<string, string> = { pending: 'A aguardar validação', published: 'Publicado', closed: 'Encerrado', rejected: 'Não validado', cancelled: 'Cancelado', interested: 'Interesse confirmado', donated: 'Doação confirmada', not_donated: 'Visita concluída sem doação', approved: 'Unidade validada' };
+export function dateLabel(value: string) { return new Date(value.length === 10 ? `${value}T12:00:00` : value).toLocaleDateString('pt-MZ', { day: 'numeric', month: 'short', year: 'numeric' }); }
+export function dayOffset(offset: number) { const day = new Date(); day.setDate(day.getDate() + offset); return `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`; }
+export function errorMessage(error: unknown) { if (error instanceof Error) return error.message; return 'Não foi possível concluir. Verifique a ligação e tente novamente.'; }

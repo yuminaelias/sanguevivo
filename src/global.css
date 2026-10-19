@@ -1,57 +1,74 @@
 @import 'tailwindcss';
 @import 'uniwind';
 @import 'heroui-native/styles';
-
-/* Let Tailwind's scanner see HeroUI Native's compiled classNames. */
 @source '../node_modules/heroui-native/lib';
 
-/* ════════════════════════════════════════════════════════════════════════════
- * APP DESIGN TOKENS — the locked visual identity for THIS app.
- *
- * Owned by the design system: the infer/plan step writes this block and the
- * refine path ("warmer", "more playful") edits it. Components consume these
- * through token utilities (bg-accent, text-foreground, rounded-2xl, …) — they
- * must NEVER hard-code hex or magic numbers. To restyle the whole app, edit the
- * tokens here and let components re-snap; do not hand-patch individual screens.
- *
- * These override HeroUI Native's defaults (loaded just above), so only declare
- * what differs. See design/dials.json for variance / motion / density and
- * design/DESIGN.md for the identity this encodes.
- * ════════════════════════════════════════════════════════════════════════════ */
-
-/* @newly:tokens:start — the lock_design step and the refine path rewrite EVERYTHING
- * between these markers. Hand-edits here are allowed but will be replaced on refine. */
-
-/* Brand accent (primary action color), per color scheme. OKLCH like HeroUI.
- * The scaffold default is Newly pink (the app icon's magenta) so the Welcome
- * screen is on-brand out of the box; lock_design replaces it with the app's own. */
+/* @newly:tokens:start */
 @layer theme {
   :root {
     @variant light {
-      --accent: oklch(0.66 0.26 325);
-      --accent-foreground: oklch(0.99 0 0);
+      --background: #FFF8F8;
+      --foreground: #291B22;
+      --surface: #FFFFFF;
+      --surface-foreground: #291B22;
+      --overlay: #FFFFFF;
+      --overlay-foreground: #291B22;
+      --muted: #78656D;
+      --accent: #A82039;
+      --accent-foreground: #FFFFFF;
+      --accent-soft: #F9E2E7;
+      --accent-soft-foreground: #8C1C32;
+      --default: #F2E7EB;
+      --default-foreground: #291B22;
+      --border: #E8D8DE;
+      --separator: #E8D8DE;
+      --field: #FFFFFF;
+      --field-foreground: #291B22;
+      --field-placeholder: #78656D;
+      --success: #19735C;
+      --success-foreground: #FFFFFF;
+      --success-soft: #E0F2EA;
+      --success-soft-foreground: #125840;
+      --danger: #B5203C;
+      --danger-foreground: #FFFFFF;
+      --danger-soft: #FBE4E8;
+      --danger-soft-foreground: #921C32;
+      --warning: #895B15;
+      --warning-soft: #F9EFCF;
+      --warning-soft-foreground: #71490F;
     }
     @variant dark {
-      --accent: oklch(0.72 0.22 325);
-      --accent-foreground: oklch(0.16 0 0);
+      --background: #1C1419;
+      --foreground: #FFF4F6;
+      --surface: #302229;
+      --surface-foreground: #FFF4F6;
+      --overlay: #302229;
+      --overlay-foreground: #FFF4F6;
+      --muted: #C4AFB8;
+      --accent: #FF8295;
+      --accent-foreground: #291B22;
+      --accent-soft: #4A2430;
+      --accent-soft-foreground: #FFB9C5;
+      --default: #44313B;
+      --default-foreground: #FFF4F6;
+      --border: #59424E;
+      --separator: #59424E;
+      --field: #302229;
+      --field-foreground: #FFF4F6;
+      --field-placeholder: #C4AFB8;
+      --success: #79D5B1;
+      --success-foreground: #123E2D;
+      --success-soft: #1A3C30;
+      --success-soft-foreground: #A2E2C8;
+      --danger: #FF8295;
+      --danger-foreground: #291B22;
+      --danger-soft: #4A2430;
+      --danger-soft-foreground: #FFB9C5;
+      --warning: #EAC576;
+      --warning-soft: #43381E;
+      --warning-soft-foreground: #F4DCAA;
     }
   }
 }
-
-/* Base corner radius — the DENSITY dial's lever. Every rounded-* utility derives
- * from this (HeroUI: --radius-2xl = --radius * 2, etc.). Larger = softer/cozier. */
-@theme {
-  --radius: 0.75rem;
-}
+@theme { --radius: 0.75rem; }
 /* @newly:tokens:end */
-
-/* Web-only display fonts (native uses the system font stack: SF Pro / Roboto). */
-:root {
-  --font-display:
-    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol, Noto Color Emoji;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
-  --font-serif: Georgia, 'Times New Roman', serif;
-}

@@ -7,7 +7,8 @@
     "icon": "./assets/images/icon.png",
     "scheme": "expobase",
     "userInterfaceStyle": "automatic",
-    "ios": {},
+    "ios": { "entitlements": { "aps-environment": "development" } },
+    "extra": { "oneSignalAppId": "a6c42ed7-7977-4252-b99e-8015d4b98572" },
     "android": {
       "package": "app.newly.preview",
       "predictiveBackGestureEnabled": false
@@ -17,6 +18,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      ["onesignal-expo-plugin", { "mode": "development", "disableNSE": true }],
       "./plugins/with-newly-build-provenance",
       [
         "expo-dev-client",

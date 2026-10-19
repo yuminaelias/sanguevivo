@@ -1,7 +1,7 @@
 import '@/global.css';
 
 import Constants from 'expo-constants';
-import { DarkTheme, DefaultTheme, Slot, ThemeProvider } from 'expo-router';
+import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import { HeroUINativeProvider } from 'heroui-native';
 import { useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -9,6 +9,10 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { Newly } from '@newly/sdk-react-native';
 
 import { ThemeSwitchHost } from '@/components/theme-switch-host';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/lib/query-client';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { NotificationProvider } from '@/contexts/NotificationContext';
 import { hideExpoDeveloperUi } from '@/lib/dev-menu';
 import generatedAnalytics from '@/lib/newly-analytics.json';
 
@@ -87,7 +91,7 @@ export default function RootLayout() {
                   screen), no tab bar. src/components/app-tabs.tsx is the NativeTabs
                   reference: when the app has tab routes, render <AppTabs /> here
                   instead of <Slot /> (explore.tsx is its second tab). */}
-              <Slot />
+              <QueryClientProvider client={queryClient}><AuthProvider><NotificationProvider><Stack screenOptions={{ headerShown: false }} /></NotificationProvider></AuthProvider></QueryClientProvider>
             </ThemeSwitchHost>
           </ThemeProvider>
         </HeroUINativeProvider>
